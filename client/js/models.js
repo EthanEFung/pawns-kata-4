@@ -42,9 +42,12 @@ class Pawn {
   }
   advance(currSq, desiredSq) {
     if (
-      sqIsOneRowAway(currSq, desiredSq, this.side) &&
-      sqIsVacant(desiredSq) &&
-      columnsAreTheSame(currSq, desiredSq)
+      (sqIsOneRowAway(currSq, desiredSq, this.side) &&
+        sqIsVacant(desiredSq) &&
+        columnsAreTheSame(currSq, desiredSq)) ||
+      (sqIsOneRowAway(currSq, desiredSq, this.side) &&
+        sqIsOneColAway(currSq, desiredSq) &&
+        sqHasOpposition(desiredSq, this.side))
     ) {
       this.row = desiredSq.row;
       this.col = desiredSq.col;
@@ -52,18 +55,7 @@ class Pawn {
       currSq.piece = null;
     }
   }
-  capture(currSq, desiredSq) {
-    if (
-      sqIsOneRowAway(currSq, desiredSq, this.side) &&
-      sqIsOneColAway(currSq, desiredSq) &&
-      sqHasOpposition(desiredSq, this.side)
-    ) {
-      this.row = desiredSq.row;
-      this.col = desiredSq.col;
-      desiredSq.piece = this;
-      currSq.piece = null;
-    }
-  }
+  capture(currSq, desiredSq) {}
 }
 
 function sqIsVacant(desiredSq) {
@@ -89,11 +81,11 @@ function sqHasOpposition(desiredSq, currSide) {
 
 class Player {}
 
-module.exports = {
-  Game,
-  Pawn,
-  Player,
-  sqIsOneRowAway,
-  columnsAreTheSame,
-  sqIsOneColAway
-};
+// module.exports = {
+//   Game,
+//   Pawn,
+//   Player,
+//   sqIsOneRowAway,
+//   columnsAreTheSame,
+//   sqIsOneColAway
+// };
