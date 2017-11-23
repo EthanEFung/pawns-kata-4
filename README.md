@@ -27,3 +27,12 @@ pawn promotion in a controlled environment.
 * not be able to beat an AI opponent playing black pieces
 * should have analysis of errors that were made
 * should be notified of the users errors and view why
+
+## Retrospective
+
+* Had to take another look at the drag and drop event handlers of the dom api
+
+Overall, satisfied with how I've been progressing. Now, I'm able to render some
+game logic given I have all the necessary parts of the MVC client framework to
+work with. Will continue to practice so that I can get a workable product in the
+near-near future. Excited about this.
