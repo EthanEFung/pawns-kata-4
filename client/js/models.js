@@ -75,6 +75,7 @@ function sqIsOneColAway(currSq, desiredSq) {
   return currSq.col === desiredSq.col + 1 || currSq.col === desiredSq.col - 1;
 }
 function sqHasOpposition(desiredSq, currSide) {
+  if (desiredSq.piece === null) return false;
   const opposition = currSide === "white" ? "black" : "white";
   return desiredSq.piece.side === opposition;
 }
